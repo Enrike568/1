@@ -28,38 +28,43 @@
 
 
     <RadioGroup
-        android:layout_gravity="center"
+        android:id="@+id/radiogroup"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_gravity="center">
 
         <RadioButton
+            android:id="@+id/sha1"
             android:layout_width="87dp"
             android:layout_height="wrap_content"
             android:text="SHA-1" />
 
         <RadioButton
+            android:id="@+id/sha224"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SHA-224" />
 
         <RadioButton
+            android:id="@+id/sha256"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SHA-256" />
 
         <RadioButton
+            android:id="@+id/sha384"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SHA-384" />
 
         <RadioButton
+            android:id="@+id/sha512"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SHA-512" />
 
 
     </RadioGroup>
-
 
     <Button
         android:id="@+id/button"
