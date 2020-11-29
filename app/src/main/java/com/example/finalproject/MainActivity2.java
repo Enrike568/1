@@ -1,5 +1,6 @@
 package com.example.finalproject;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
 import android.util.Log;
@@ -36,7 +37,52 @@ public class MainActivity2 extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
 
+        Button btnActOne = (Button) findViewById(R.id.btnActOne);
+        btnActOne.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(MainActivity2.this, MainActivity.class);
+                startActivity(intent);
+
+            }
+        });
+
         radioGroup = findViewById(R.id.radiogroup);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+
+                switch (radioGroup.getCheckedRadioButtonId()){
+
+                    case R.id.sha1:
+                        sha = "SHA-1";
+                        break;
+
+                    case R.id.sha224:
+                        sha = "SHA-224";
+                        break;
+
+                    case R.id.sha256:
+                        sha = "SHA-256";
+                        break;
+
+                    case R.id.sha512:
+                        sha = "SHA-512";
+                        break;
+                    case R.id.sha384:
+                        sha = "SHA-384";
+                        break;
+                    default:
+                        sha = "SHA-1";
+                        break;
+
+                }
+
+
+
+            }
+        });
 
         final EditText etInput = (EditText) findViewById(R.id.etInput);
         final TextView tvOutput = (TextView) findViewById(R.id.tvOutput);
@@ -49,54 +95,16 @@ public class MainActivity2 extends AppCompatActivity {
 
         button = findViewById(R.id.button);
 
-        int rgid;
-
-        final String input = etInput.getText().toString();
-
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-
-                rgid[0] = checkedId;
-
-            }
-        });
-
-        switch (rgid[0]){
-
-            case R.id.sha1:
-                sha = "SHA-1";
-                break;
-
-            case R.id.sha224:
-                sha = "SHA-224";
-                break;
-
-            case R.id.sha256:
-                sha = "SHA-256";
-                break;
-
-            case R.id.sha512:
-                sha = "SHA-512";
-                break;
-            case R.id.sha384:
-                sha = "SHA-384";
-                break;
-            default:
-                sha = "SHA-1";
-                break;
-
-        }
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                Log.d("TAGA", "1");
-                Log.d("TAGA", sha);
-                tvOutput.setText(encryptThisString(input, sha));
 
-                Log.d("TAGA", tvOutput.getText().toString());
+
+                tvOutput.setText(encryptThisString(etInput.getText().toString(), sha));
+
+
 
 
             }
