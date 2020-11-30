@@ -5,14 +5,13 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
-    android:gravity=""
     android:orientation="vertical"
     tools:context=".MainActivity">
 <LinearLayout
     android:layout_width="match_parent"
+    android:layout_height="wrap_content"
     android:orientation="vertical"
-    android:layout_gravity="center"
-    android:layout_height="wrap_content">
+    android:layout_gravity="center">
 
     <TextView
         android:id="@+id/Code_MD5"
@@ -35,7 +34,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="btnMD5"
-        android:text="Encrypt!" />
+        android:text="Encrypt!"
+        style="@style/Widget.AppCompat.Button.Colored" />
 
     <TextView
         android:id="@+id/tvOutput"
@@ -46,15 +46,13 @@
         android:gravity="center"
         android:hint="Result" />
 
-
 </LinearLayout>
-
     <Button
         android:id="@+id/btnActTwo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Next" />
-
+        android:text="Next"
+        style="@style/Widget.AppCompat.Button.Colored" />
 
 </LinearLayout>

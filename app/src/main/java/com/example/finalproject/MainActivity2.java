@@ -1,5 +1,8 @@
 package com.example.finalproject;
 
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.provider.MediaStore;
@@ -10,6 +13,7 @@ import android.widget.EditText;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -30,6 +34,7 @@ public class MainActivity2 extends AppCompatActivity {
     RadioButton sha256;
     RadioButton sha384;
     RadioButton sha512;
+    TextView tvOutput;
 
 
     @Override
@@ -78,9 +83,6 @@ public class MainActivity2 extends AppCompatActivity {
                         break;
 
                 }
-
-
-
             }
         });
 
@@ -94,7 +96,6 @@ public class MainActivity2 extends AppCompatActivity {
         sha384 = findViewById(R.id.sha384);
 
         button = findViewById(R.id.button);
-
 
         button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -112,38 +113,19 @@ public class MainActivity2 extends AppCompatActivity {
 
         });
     }
-
     public static String encryptThisString(String input, String sha) {
-
         try {
-
             MessageDigest md = MessageDigest.getInstance(sha);
-
             byte[] messageDigest = md.digest(input.getBytes());
-
             BigInteger no = new BigInteger(1, messageDigest);
-
             String hashtext = no.toString(16);
-
             while (hashtext.length() < 32) {
-
                 hashtext = "0" + hashtext;
-
             }
-
             return hashtext;
-
         }
-
         catch (NoSuchAlgorithmException e) {
-
             throw new RuntimeException(e);
-
         }
-
     }
-
 }
-
-
-

@@ -2,13 +2,19 @@ package com.example.finalproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.accessibilityservice.AccessibilityService;
+import android.content.ClipData;
+import android.content.ClipboardManager;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.renderscript.ScriptGroup;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -19,17 +25,19 @@ import java.text.BreakIterator;
 
 public class MainActivity extends AppCompatActivity  {
 
+    TextView tvOutput;
     Button btnActTwo;
 
     private Object Text;
     private Button encrypt;
     private Object Code;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
 
         btnActTwo = (Button) findViewById(R.id.btnActTwo);
         btnActTwo.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +49,6 @@ public class MainActivity extends AppCompatActivity  {
 
             }
         });
-
 
         final EditText etInput = (EditText) findViewById(R.id.etInput);
         final TextView tvOutput = (TextView) findViewById(R.id.tvOutput);
@@ -68,5 +75,7 @@ public class MainActivity extends AppCompatActivity  {
     } catch (NoSuchAlgorithmException e) { e.printStackTrace();
         } return "";
     }
-}
 
+    public void btnSHA(View view) {
+    }
+}

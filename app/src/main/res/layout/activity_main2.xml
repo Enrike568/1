@@ -5,7 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:layout_margin="10dp"
-    android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
@@ -71,7 +70,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:onClick="btnSHA"
-        android:text="Encrypt!" />
+        android:text="Encrypt!"
+        style="@style/Widget.AppCompat.Button.Colored"/>
 
     <TextView
         android:id="@+id/tvOutput"
@@ -81,8 +81,15 @@
         android:ems="10"
         android:gravity="center"
         android:hint="Result" />
+    <Button
+        android:id="@+id/btnActOne"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/back"
+        style="@style/Widget.AppCompat.Button.Colored"/>
 
-
-
-
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
 </LinearLayout>
