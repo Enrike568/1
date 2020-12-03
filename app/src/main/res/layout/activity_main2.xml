@@ -62,30 +62,44 @@
             android:layout_height="wrap_content"
             android:text="SHA-512" />
 
+        <Button
+            android:id="@+id/button"
+            style="@style/Widget.AppCompat.Button.Colored"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:onClick="btnSHA"
+            android:text="Encrypt!" />
+
+        <TextView
+            android:id="@+id/tvOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="20dp"
+            android:ems="10"
+            android:gravity="center"
+            android:hint="Result" />
+
 
     </RadioGroup>
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/btnCopy"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:onClick="btnSHA"
-        android:text="Encrypt!"
-        style="@style/Widget.AppCompat.Button.Colored"/>
+        android:text="Copy"
+        style="@style/Widget.AppCompat.Button.Colored" />
+    <Button
+        android:id="@+id/btnShare"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Share"
+        style="@style/Widget.AppCompat.Button.Colored" />
 
-    <TextView
-        android:id="@+id/tvOutput"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:ems="10"
-        android:gravity="center"
-        android:hint="Result" />
     <Button
         android:id="@+id/btnActOne"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/back"
+        android:text="Go to MD5"
         style="@style/Widget.AppCompat.Button.Colored"/>
 
         <LinearLayout

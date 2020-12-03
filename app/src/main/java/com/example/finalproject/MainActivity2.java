@@ -25,7 +25,8 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class MainActivity2 extends AppCompatActivity {
-
+    Button btnCopy;
+    Button btnShare;
     Button button;
     String sha;
     RadioGroup radioGroup;
@@ -35,12 +36,18 @@ public class MainActivity2 extends AppCompatActivity {
     RadioButton sha384;
     RadioButton sha512;
     TextView tvOutput;
+    EditText etInput;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
+
+        etInput = (EditText) findViewById(R.id.etInput);
+        tvOutput = (TextView) findViewById(R.id.tvOutput);
+        btnCopy = (Button) findViewById(R.id.btnCopy);
+        btnShare = (Button) findViewById(R.id.btnShare);
 
         Button btnActOne = (Button) findViewById(R.id.btnActOne);
         btnActOne.setOnClickListener(new View.OnClickListener() {
@@ -52,6 +59,32 @@ public class MainActivity2 extends AppCompatActivity {
 
             }
         });
+
+        btnCopy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("tag", tvOutput.getText().toString());
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("1", tvOutput.getText().toString());
+                clipboard.setPrimaryClip(clip);
+                Toast toast = Toast.makeText(getApplicationContext(), "Text Copied", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
+
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, tvOutput.getText().toString());
+                sendIntent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
+            }
+        });
+
 
         radioGroup = findViewById(R.id.radiogroup);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
@@ -86,8 +119,7 @@ public class MainActivity2 extends AppCompatActivity {
             }
         });
 
-        final EditText etInput = (EditText) findViewById(R.id.etInput);
-        final TextView tvOutput = (TextView) findViewById(R.id.tvOutput);
+
 
         sha1 = findViewById(R.id.sha1);
         sha224 = findViewById(R.id.sha224);
