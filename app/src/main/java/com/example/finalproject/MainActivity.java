@@ -27,6 +27,8 @@ public class MainActivity extends AppCompatActivity  {
 
     TextView tvOutput;
     Button btnActTwo;
+    Button btnCopy;
+    Button btnShare;
 
     private Object Text;
     private Button encrypt;
@@ -37,6 +39,16 @@ public class MainActivity extends AppCompatActivity  {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        btnCopy = (Button) findViewById(R.id.btnCopy);
+        btnShare = (Button) findViewById(R.id.btnShare);
+        btnCopy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
+                ClipData clip = ClipData.newPlainText("", tvOutput.getText().toString());
+                clipboard.setPrimaryClip(clip);
+            }
+        });
 
 
         btnActTwo = (Button) findViewById(R.id.btnActTwo);
