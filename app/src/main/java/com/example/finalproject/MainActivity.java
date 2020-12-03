@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity  {
     Button btnActTwo;
     Button btnCopy;
     Button btnShare;
+    EditText etInput;
 
     private Object Text;
     private Button encrypt;
@@ -40,13 +41,31 @@ public class MainActivity extends AppCompatActivity  {
         setContentView(R.layout.activity_main);
 
         btnCopy = (Button) findViewById(R.id.btnCopy);
+        etInput = (EditText) findViewById(R.id.etInput);
+        tvOutput = (TextView) findViewById(R.id.tvOutput);
         btnShare = (Button) findViewById(R.id.btnShare);
         btnCopy.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Log.d("tag", tvOutput.getText().toString());
                 ClipboardManager clipboard = (ClipboardManager) getSystemService(Context.CLIPBOARD_SERVICE);
-                ClipData clip = ClipData.newPlainText("", tvOutput.getText().toString());
+                ClipData clip = ClipData.newPlainText("1", tvOutput.getText().toString());
                 clipboard.setPrimaryClip(clip);
+                Toast toast = Toast.makeText(getApplicationContext(), "Text Copied", Toast.LENGTH_SHORT);
+                toast.show();
+            }
+        });
+
+        btnShare.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent sendIntent = new Intent();
+                sendIntent.setAction(Intent.ACTION_SEND);
+                sendIntent.putExtra(Intent.EXTRA_TEXT, tvOutput.getText().toString());
+                sendIntent.setType("text/plain");
+
+                Intent shareIntent = Intent.createChooser(sendIntent, null);
+                startActivity(shareIntent);
             }
         });
 
@@ -62,8 +81,6 @@ public class MainActivity extends AppCompatActivity  {
             }
         });
 
-        final EditText etInput = (EditText) findViewById(R.id.etInput);
-        final TextView tvOutput = (TextView) findViewById(R.id.tvOutput);
         encrypt = findViewById(R.id.button);
         encrypt.setOnClickListener(new View.OnClickListener() {
             @Override
